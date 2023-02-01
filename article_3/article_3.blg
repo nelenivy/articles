@@ -1,0 +1,47 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: article_3.aux
+The style file: apalike.bst
+Database file #1: article_3.bib
+Too many commas in name 1 of "J. Bioucas-Dias, V. Katkovnik, J. Astola, K. Egiazarian" for entry CircleData1
+while executing---line 1020 of file apalike.bst
+Too many commas in name 1 of "J. Bioucas-Dias, V. Katkovnik, J. Astola, K. Egiazarian" for entry CircleData1
+while executing---line 1020 of file apalike.bst
+Too many commas in name 1 of "R. Bergmann, F. Laus, G. Steidl, A. Weinmann" for entry CircleData3
+while executing---line 1020 of file apalike.bst
+Too many commas in name 1 of "R. Bergmann, F. Laus, G. Steidl, A. Weinmann" for entry CircleData3
+while executing---line 1020 of file apalike.bst
+Too many commas in name 1 of "R. Bergmann, R. H. Chan, R. Hielscher, J. Persch, G. Steidl" for entry SO3Data2
+while executing---line 1020 of file apalike.bst
+Too many commas in name 1 of "R. Bergmann, R. H. Chan, R. Hielscher, J. Persch, G. Steidl" for entry SO3Data2
+while executing---line 1020 of file apalike.bst
+Too many commas in name 1 of "R. Bergmann, R. H. Chan, R. Hielscher, J. Persch, G. Steidl" for entry SO3Data2
+while executing---line 1020 of file apalike.bst
+Too many commas in name 1 of "R. Bergmann, R. H. Chan, R. Hielscher, J. Persch, G. Steidl" for entry SO3Data2
+while executing---line 1020 of file apalike.bst
+Too many commas in name 1 of "C. Chefd’Hotel, D. Tschumperle, R. Deriche, O. Faugeras" for entry SPDMatrixData1
+while executing---line 1020 of file apalike.bst
+Too many commas in name 1 of "C. Chefd’Hotel, D. Tschumperle, R. Deriche, O. Faugeras" for entry SPDMatrixData1
+while executing---line 1020 of file apalike.bst
+Warning--empty publisher in qsar
+Warning--there's a number but no volume in CircleData2
+Too many commas in name 1 of "C. Chefd’Hotel, D. Tschumperle, R. Deriche, O. Faugeras" for entry SPDMatrixData1
+while executing---line 1095 of file apalike.bst
+Warning--there's a number but no volume in SPDMatrixData1
+Warning--there's a number but no volume in SO3Data1
+Warning--empty booktitle in VectorProc
+Too many commas in name 1 of "J. Bioucas-Dias, V. Katkovnik, J. Astola, K. Egiazarian" for entry CircleData1
+while executing---line 1095 of file apalike.bst
+Warning--there's a number but no volume in CircleData1
+Warning--there's a number but no volume in SphereData2
+Warning--there's a number but no volume in StructureTensor
+Warning--empty school in Moravec1980
+Too many commas in name 1 of "R. Bergmann, F. Laus, G. Steidl, A. Weinmann" for entry CircleData3
+while executing---line 1095 of file apalike.bst
+Warning--there's a number but no volume in CircleData3
+Too many commas in name 1 of "R. Bergmann, R. H. Chan, R. Hielscher, J. Persch, G. Steidl" for entry SO3Data2
+while executing---line 1095 of file apalike.bst
+Too many commas in name 1 of "R. Bergmann, R. H. Chan, R. Hielscher, J. Persch, G. Steidl" for entry SO3Data2
+while executing---line 1095 of file apalike.bst
+Warning--there's a number but no volume in SO3Data2
+Warning--there's a number but no volume in SphereData1
+Warning--there's a number but no volume in SphereData3
+(There were 15 error messages)

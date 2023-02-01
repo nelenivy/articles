@@ -1,0 +1,9 @@
+https://payment.sips-atos.com/cgis-payment/prod/callresource;jsessionid=8yxVPkejvVnnOqwgAvrvwh53.23v?rsc=creditcard
+Transaction date	September 14 2017 21:11:16 (UTC/GMT)
+Merchant URL	www.see.asso.fr
+Merchant identifier	078539323200042
+Order Reference	230654
+Order Total	530,00 ˆ
+Card Number	5536 #### #### ##98   08/22
+Authorisation	074203
+Transaction certificate	8e0737515e9c

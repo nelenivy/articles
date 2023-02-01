@@ -1,0 +1,160 @@
+ 
+%
+\documentclass{llncs}
+
+\usepackage{graphicx}      % include this line if your document contains figures
+%\usepackage{natbib}        % required for bibliography
+
+
+\usepackage{amsmath} 
+
+\usepackage{amssymb} 
+%\newtheorem{thm}{Theorem}
+ 
+\newtheorem{ex}{Exercise}
+
+\newtheorem{expl}{Example}
+
+
+\newtheorem{prop}{Proposition}
+
+\newtheorem{thm}{Theorem}
+
+
+\begin{document}
+
+\title{Springer LNCS Example Paper}
+%
+
+\author{Ivar Ekeland\inst{1} \and Roger Temam\inst{2} Jeffrey Dean \and David Grove \and Craig Chambers \and Kim~B.~Bruce \and Elsa Bertino} % \authorrunning{Ivar Ekeland et al.} % abbreviated author list (for running head) % %%%% list of authors for the TOC (use if author list has to be modified) 
+\tocauthor{Ivar Ekeland, Roger Temam, Jeffrey Dean, David Grove, Craig Chambers, Kim B. Bruce, and Elisa Bertino} 
+ \institute{Princeton University, Princeton NJ 08544, USA,\\ \email{I.Ekeland@princeton.edu},\\ WWW home page: bb
+ \and Universit\'e de Paris-Sud, Laboratoire d'Analyse Num\'erique,\\
+F-91405 Orsay Cedex, France}
+%
+
+
+
+\maketitle              % typeset the title of the contribution
+
+\begin{abstract}
+The abstract should summarize the contents of the paper using at least 70 and at most 150 words. It will be set in 9-point font size and be inset 1.0 cm from the right and left margins.
+There will be two blank lines before and after the Abstract. \dots \keywords{computational geometry, graph theory, Hamilton cycles} \end{abstract}  
+
+\section{Hamilton}
+%
+\subsection{Autonomous Systems}
+%
+In this section, we will consider the case when the Hamiltonian $H(x)$ is autonomous. For the sake of simplicity, we shall also assume that it is $C^{1}$.
+%
+\subsubsection{The General Case: Nontriviality.} % We assume that $H$ is $\left(A_{\infty},B_{\infty}\right)$-sub\-qua\-dra\-tic at infinity, for some constant symmetric matrices $A_{\infty}$ and $B_{\infty}$, with $B_{\infty}-A_{\infty}$ positive definite. Set:
+\begin{eqnarray}
+\gamma :&=&{\rm smallest\ eigenvalue\ of}\ \ B_{\infty} - A_{\infty} \\
+   \lambda : &=& {\rm largest\ negative\ eigenvalue\ of}\ \
+   J \frac{d}{dt} +A_{\infty}\ .
+\end{eqnarray}
+
+\begin{proposition}
+Assume $H'(0)=0$ and $ H(0)=0$. Set:
+\begin{equation}
+   \delta := \liminf_{x\to 0} 2 N (x) \left\|x\right\|^{-2}\ .
+   \label{eq:one}
+\end{equation}
+
+If $\gamma < - \lambda < \delta$,
+the solution $\overline{u}$ is non-zero:
+\begin{equation}
+   \overline{x} (t) \ne 0\ \ \ \forall t\ .
+\end{equation}
+\end{proposition}
+%
+\begin{proof}
+Condition (\ref{eq:one}) means that, for every $\delta ' > \delta$, there is some $\varepsilon > 0$ such that \begin{equation}
+   \left\|x\right\| \le \varepsilon \Rightarrow N (x) \le
+   \frac{\delta '}{2} \left\|x\right\|^{2}\ .
+\end{equation}
+\end{proof}
+
+%
+
+\begin{lemma}
+Assume that $H$ is $C^{2}$ on $\bbbr^{2n} \setminus \{ 0\}$ and that $H'' (x)$ is non-de\-gen\-er\-ate for any $x\ne 0$. Then any local minimizer $\widetilde{x}$ of $\psi$ has minimal period $T$.
+\end{lemma}
+%
+\begin{proof}
+We know that $\widetilde{x}$, or
+$\widetilde{x} + \xi$ for some constant $\xi \in \bbbr^{2n}$, is a $T$-periodic solution of the Hamiltonian system:
+\begin{equation}
+   \dot{x} = JH' (x)\ .
+\end{equation}
+FF.\qed \end{proof} 
+
+\begin{table}
+\caption{This is the example table taken out of {\it The \TeX{}book,} p.\,246} \begin{center} \begin{tabular}{r@{\quad}rl} \hline \multicolumn{1}{l}{\rule{0pt}{12pt}
+                    Year}&\multicolumn{2}{l}{World population}\\[2pt] \hline\rule{0pt}{12pt}
+8000 B.C.  &     5,000,000& \\
+   50 A.D.  &   200,000,000& \\
+1650 A.D.  &   500,000,000& \\
+1945 A.D.  & 2,300,000,000& \\
+1980 A.D.  & 4,400,000,000& \\[2pt]
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+%
+\begin{theorem} [Ghoussoub-Preiss]\label{ghou:pre}
+Assume $H(t,x)$ is
+\qed
+\end{theorem}
+%
+\begin{example} [{{\rm External forcing}}] Consider the system:
+\begin{equation}
+   \dot{x} = JH' (x) + f(t)
+\end{equation}
+\end{example}
+%
+\begin{definition}
+Let $A_{\infty} (t)$ and $B_{\infty} (t)$ be symmetric
+\end{definition}
+%
+
+\paragraph{Notes and Comments.}
+The first results on subharmonics were
+
+
+%
+% ---- Bibliography ----
+%
+\begin{thebibliography}{5}
+%
+\bibitem {clar:eke}
+Clarke, F., Ekeland, I.:
+Nonlinear oscillations and
+boundary-value problems for Hamiltonian systems.
+Arch. Rat. Mech. Anal. 78, 315--333 (1982)
+
+\bibitem {clar:eke:2}
+Clarke, F., Ekeland, I.:
+Solutions p\'{e}riodiques, du
+p\'{e}riode donn\'{e}e, des \'{e}quations hamiltoniennes.
+Note CRAS Paris 287, 1013--1015 (1978)
+
+\bibitem {mich:tar}
+Michalek, R., Tarantello, G.:
+Subharmonic solutions with prescribed minimal period for nonautonomous Hamiltonian systems.
+J. Diff. Eq. 72, 28--55 (1988)
+
+\bibitem {tar}
+Tarantello, G.:
+Subharmonic solutions for Hamiltonian
+systems via a $\bbbz_{p}$ pseudoindex theory.
+Annali di Matematica Pura (to appear)
+
+\bibitem {rab}
+Rabinowitz, P.:
+On subharmonic solutions of a Hamiltonian system.
+Comm. Pure Appl. Math. 33, 609--633 (1980)
+
+\end{thebibliography}
+
+\end{document}

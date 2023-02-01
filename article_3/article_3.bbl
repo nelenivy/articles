@@ -1,0 +1,140 @@
+\begin{thebibliography}{}
+
+\bibitem[Azencot et~al., 2013]{TangentProc}
+Azencot, O., Ben‐Chen, M., Chazal, F., and Ovsjanikov, M. (2013).
+\newblock An operator approach to tangent vector field processing.
+\newblock {\em Computer Graphics Forum}, 32.
+
+\bibitem[Barth, 1993]{GradLeastSQR}
+Barth, T.~J. (1993).
+\newblock A 3-d least-squares upwind euler solver for unstructured meshes.
+\newblock In Napolitano, M. and Sabetta, F., editors, {\em Thirteenth
+  International Conference on Numerical Methods in Fluid Dynamics}, pages
+  240--244, Berlin, Heidelberg. Springer Berlin Heidelberg.
+
+\bibitem[Baskin and Varnek, 2009]{qsar}
+Baskin, I. and Varnek, A. (2009).
+\newblock {\em ChemInform Abstract: Fragment Descriptors in SAR/QSAR/QSPR
+  Studies, Molecular Similarity Analysis and in Virtual Screening}, volume~40,
+  pages 1--43.
+
+\bibitem[C.-A.~Deledalle, 2011]{CircleData2}
+C.-A.~Deledalle, L.~Denis, F.~T. (2011).
+\newblock Nl-insar: Nonlocal interferogram estimation.
+\newblock {\em IEEE Transactions on Geoscience Remote Sensing},
+  (49):1441--1452.
+
+\bibitem[C.~Chefd’Hotel, 2004]{SPDMatrixData1}
+C.~Chefd’Hotel, D.~Tschumperle, R. D. O.~F. (2004).
+\newblock Regularizing flows for constrained matrix-valued images.
+\newblock {\em Journal of Mathematical Imaging and Vision}, (20):147--162.
+
+\bibitem[C.~Harris, 1988]{Harris}
+C.~Harris, M.~S. (1988).
+\newblock A combined corner and edge detector.
+\newblock In {\em Alvey Vision Conference}.
+
+\bibitem[Connolly, 1983]{molecular}
+Connolly, M.~L. (1983).
+\newblock Analytical molecular surface calculation.
+\newblock {\em Journal of Applied Crystallography}, 16(5):548--558.
+
+\bibitem[Csurka et~al., 2004]{bag}
+Csurka, G., Dance, C., Fan, L., Willamowski, J., and Bray, C. (2004).
+\newblock Visual categorization with bags of keypoints.
+\newblock {\em Work Stat Learn Comput Vision, ECCV}, Vol. 1.
+
+\bibitem[F.~Bachmann, 2011]{SO3Data1}
+F.~Bachmann, R.~Hielscher, H.~S. (2011).
+\newblock Grain detection from 2d and 3d ebsd data - specification of the mtex
+  algorithm.
+\newblock {\em Ultramicroscopy}, (111):1720--1733.
+
+\bibitem[Goes et~al., 2015]{VectorProc}
+Goes, F., Desbrun, M., and Tong, Y. (2015).
+\newblock Vector field processing on triangle meshes.
+
+\bibitem[J.~Bioucas-Dias, 2008]{CircleData1}
+J.~Bioucas-Dias, V.~Katkovnik, J. A. K.~E. (2008).
+\newblock Absolute phase estimation: adaptive local denoising and global
+  unwrapping.
+\newblock {\em Applied Optics}, (47):5358--5369.
+
+\bibitem[L.~A.~Vese, 2002]{SphereData2}
+L.~A.~Vese, S. J.~O. (2002).
+\newblock Numerical methods for p-harmonic flows and applications to image
+  processing.
+\newblock {\em SIAM Journal on Numerical Analysis}, (40):2085--2104.
+
+\bibitem[Liu et~al., 2016]{CovariantCalc}
+Liu, B., Tong, Y., Goes, F., and Desbrun, M. (2016).
+\newblock Discrete connection and covariant derivative for vector field
+  analysis and design.
+\newblock {\em ACM Transactions on Graphics}, 35.
+
+\bibitem[M.~Kass, 1987]{StructureTensor}
+M.~Kass, A.~W. (1987).
+\newblock Analyzing oriented patterns.
+\newblock {\em Computer Vision, Graphics, and Image Processing}, (37):362--385.
+
+\bibitem[Montesinos et~al., 1998]{Montesinos98}
+Montesinos, P., Gouet, V., and Deriche, R. (1998).
+\newblock Differential invariants for color images.
+\newblock In {\em Proceedings of the 14th International Conference on Pattern
+  Recognition-Volume 1 - Volume 1}, ICPR '98, Washington, DC, USA. IEEE
+  Computer Society.
+
+\bibitem[Montesinos et~al., 2000]{Montesinos2000}
+Montesinos, P., Gouet, V., Deriche, R., and Pelé, D. (2000).
+\newblock Matching color uncalibrated images using differential invariants.
+\newblock {\em Image Vision Comput.}, 18:659--671.
+
+\bibitem[Moravec, 1980]{Moravec1980}
+Moravec, H.~P. (1980).
+\newblock {\em Obstacle Avoidance and Navigation in the Real World by a Seeing
+  Robot Rover}.
+\newblock PhD thesis, Stanford, CA, USA.
+\newblock AAI8024717.
+
+\bibitem[O.~Tuzel, 2008]{SPDMatrixData3}
+O.~Tuzel, F.~Porikli, P.~M. (2008).
+\newblock Learning on lie groups for invariant detection and tracking.
+\newblock In {\em CVPR 2008}, pages 1--8. IEEE.
+
+\bibitem[P.~T.~Fletcher, 2004]{SPDMatrixData2}
+P.~T.~Fletcher, S.~J. (2004).
+\newblock Principal geodesic analysis on symmetric spaces: Statistics of
+  diffusion tensors.
+\newblock In {\em Computer Vision and Mathematical Methods in Medical and
+  Biomedical Image Analysis}, volume 3117, pages 87--98. Springer.
+
+\bibitem[R.~Bergmann, 2014]{CircleData3}
+R.~Bergmann, F.~Laus, G. S. A.~W. (2014).
+\newblock Second order differences of cyclic data and applications in
+  variational denoising.
+\newblock {\em SIAM Journal on Imaging Sciences}, (7):2916--2953.
+
+\bibitem[R.~Bergmann, 2016]{SO3Data2}
+R.~Bergmann, R. H.~Chan, R. H. J. P. G.~S. (2016).
+\newblock Restoration of manifold-valued images by half-quadratic minimization.
+\newblock {\em Inverse Problems in Imaging}, (10):281--304.
+
+\bibitem[R.~Kimmel, 2002]{SphereData1}
+R.~Kimmel, N.~S. (2002).
+\newblock Orientation diffusion or how to comb a porcupine.
+\newblock {\em Journal of Visual Communication and Image Representation},
+  (13):238--248.
+
+\bibitem[T.~F.~Chan, 2001]{SphereData3}
+T.~F.~Chan, S.~Kang, J.~S. (2001).
+\newblock Total variation denoising and enhancement of color images based on
+  the cb and hsv color models.
+\newblock {\em Journal of Visual Communication and Image Representation},
+  (12):422--435.
+
+\bibitem[Tomasi and Kanade, 1991]{Tomasi91}
+Tomasi, C. and Kanade, T. (1991).
+\newblock Detection and tracking of point features.
+\newblock Technical report, International Journal of Computer Vision.
+
+\end{thebibliography}

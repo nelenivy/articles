@@ -1,0 +1,309 @@
+ 
+%
+\documentclass{llncs}
+\usepackage{graphicx}      % include this line if your document contains figures
+%\usepackage{natbib}        % required for bibliography
+\usepackage{amsmath} 
+\usepackage{amssymb}
+\usepackage{tensor} 
+%\newtheorem{thm}{Theorem} 
+\newtheorem{ex}{Exercise}
+\newtheorem{expl}{Example}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+
+\newcommand{\LaplaceBeltrami}{\Delta_{\mathrm{LB}}}
+\newcommand{\partderiv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\extr}[1]{\mathrm{extr}_{#1}}
+\newcommand{\toreal}{\rightarrow\bbbr}
+\newcommand{\toeuclidean}[1]{\rightarrow\bbbr^{#1}}
+\newcommand{\CovariantDiffManif}[1]{\nabla^{#1}}
+\newcommand{\CovariantDerivManif}[2]{\tensor*{\nabla}{^{#1}_{#2}}}
+\newcommand{\CovariantDiff}{\nabla}
+\newcommand{\CovariantDeriv}[1]{\nabla_{#1}}
+\newcommand{\Diff}{\mathrm{d}}
+\newcommand{\TangentSpaceP}[1]{{T_p}{#1}}
+\newcommand{\CotangentSpaceP}[1]{\tensor*{T}{^{*}_{p}}{#1}}
+\newcommand{\TangentBundle}[1]{T{#1}}
+\newcommand{\CotangentBundle}[1]{\tensor*{T}{^{*}}{#1}}
+\newcommand{\FRScalar}{FR_{\mathrm{scalar}}}
+\newcommand{\FRMean}{FR_{\mathrm{mean}}}
+\newcommand {\tr}{\mathrm{tr}}
+\newcommand {\Preimage}[2]{{#2}^*{#1}}
+\newcommand \TpPreimage[2]{\Preimage{\TangentSpaceP{#1}}{#2}}
+\newcommand {\DiffSpaceP}[3]{\CotangentSpaceP{#1}\otimes \TpPreimage{#2}{#3}}
+\newcommand {\HessianSpaceP}[3]{\CotangentSpaceP{#1}\otimes \CotangentSpaceP{#2}\otimes \TpPreimage{#2}{#3}}
+
+\newcommand \TPreimage[2]{\Preimage{\TangentBundle{#1}}{#2}}
+\newcommand \CotPreimage[2]{\Preimage{\CotangentBundle{#1}}{#2}}
+\newcommand \CotPPreimage[2]{\Preimage{\CotangentSpaceP{#1}}{#2}}
+\newcommand {\DiffSpace}[3]{\CotangentBundle{#1}\otimes \TPreimage{#2}{#3}}
+\newcommand {\HessianSpace}[3]{\CotangentBundle{#1}\otimes \CotangentBundle{#2}\otimes \TPreimage{#2}{#3}}
+
+\newcommand {\bigeps}{\mathcal{E}}
+
+\begin{document}
+
+\title{A Riemanian Approach for Blob Detection in Manifold-Valued Images}
+%
+
+\author{Aleksei Shestov\inst{1} \and Mikhail Kumskov\inst{1}} 
+ \institute{Lomonosov Moscow State University, Faculty of Mechanics and Mathematics, Russia, 119991, Moscow, GSP-1, 1 Leninskiye Gory, Main Building}
+%
+
+
+
+\maketitle              % typeset the title of the contribution
+
+\begin{abstract}
+%
+In this paper we present a new framework for blob detection in generalized images, modeled as maps between Riemannian manifolds. We call this framework the Riemannian blob detection. We formulate our blob response function through curvatures of image graph and provide its expression through image Hessian. Riemannian blob detection framework gives blob response functions for previously uncovered cases (multivalued images on manifolds and manifold-valued images) and coincides with classical blob detection framework for the grayscale case. We provide experiments for the case of vector-valued images on 2d surfaces: we test the proposed framework on the task of chemical compounds classification.
+\keywords{blob detection, image processing, manifold-valued images, differential geometry} \end{abstract}  
+%
+\section{Introduction}
+%
+Recently there is a big demand in non-Euclidian data processing. In informational geometry [, ,], proteins modeling [, ,], chemical compounds classification[, ,], 3d reconstruction [,], 3d models recognition [], action recognition [,], medical images processing [, ,] we deal with vector-valued or manifold-valued functions defined on manifolds. One approach to development of manifold data processing is a generalization of grayscale image processing methods. 
+\\
+Blob detection [, , , , ,] is a widely used method of keypoints detection in grayscale images. Informally speaking, blob detection aims to find ellipse-like regions of different sizes with “similar” intensity inside. Blobs are sought as local extremums of blob response function. This technique is the base of widely used SIFT [] and SURF [] features extraction algorithms. Blob detection has applications in such problems as 3D face recognition, object recognition, panorama stitching, 3D scene modeling[], tracking[], action recognition[], medical images processing[], etc.
+\\
+Our goal is to propose blob detection framework for the general setting of an image being a map between Riemannian manifolds. Our approach is based on formulation of blob response functions through image graph curvatures. Further, we derive the expression of Riemannian blob response functions through image Hessian. The derived expression shows that Riemannian blob detection coincides with classical blob detection framework for the grayscale case. Also this expression provides a more convenient way to calculate Riemannian blob response functions for vector- and manifold-valued images.
+\\
+A research of a connection between image processing methods and image graph geometry is of its own interest. This research helps deeper understand traditional methods[,], provides insights[,] and gives natural extensions of classical methods to vector-valued [,] and manifold-valued [,] images. A connection between blob response function and image graph curvatures was mentioned in several papers [, ,], but there were errors in proposed analysis. So our paper is the first to accurately analyze this question in the general setting.
+
+\subsubsection{Contributions:}
+We present a general framework for blob detection in images, modeled as maps between Riemannian manifolds. Our framework is based on formulation of blob response function through curvatures of image graph.
+\begin{enumerate}
+\item We are the first to provide blob detection framework for the general setting of an image being a map between manifolds. Our general framework provides blob response functions for previously uncovered problems: blob detection in color images on manifold domain and blob detection in manifold-valued images (both on Euclidian and manifold domain). Due to the generality our framework is applicable to a broad set of problems and data representations. 
+\item We are the first to analyze a connection between blob response functions and curvatures of image graph.
+\item Experiments on the task of chemical compounds classification show the effectiveness of our approach for the case of vector-valued images on 2d surfaces.  
+\end{enumerate}
+
+The remainder of the paper is organized as follows. In section 2 we review related work. In section 3 we introduce the problem under consideration. In section 4 we formulate the Riemannian blob response functions, show a connection to existing methods and give formulations of these framework through Hessian. In section 5 we give proofs of theorems formulated in section 4. In section 6 we provide experiments results. In section 7 we give conclusions and discuss possible directions of the future research.
+
+\section{Related Work}
+Adaptations of grayscale image processing to the general case of manifold-valued images can be found in [, , ,]. ...
+\\
+Blob detection was firstly proposed in works [, , , ,] for images on 2D Euclidian domain. Different versions of this method were used as a part of well-known SIFT [] and SURF [] algorithms. In works [, ,] blob detection was generalized (in different ways) for 2D surfaces embedded in $\bbbr^3$ and represented by triangular mesh. Some approaches to adaptation of blob detection for color case were proposed in [, , ,]. These approaches are based on global or local conversion of color image to grayscale.
+\\
+Geometry of image graph was used in different image processing methods. In [] metric of image surface was used for generalization of gradient to color images. In [, ,] the framework was proposed which allows to reformulate many diffusion methods as Polyakov action on image manifold. In [, ,] the applications of discrete Forman curvatures to image processing were presented. In [, ,, ] image was considered as a section of trivial Clifford bundle over smooth manifold which allows generalized definitions of gradient, diffusion, Fourier transform.
+
+\section{The Problem Introduction}
+\subsection{Grayscale Blob Detection Formal Definition}
+Firstly we will give here the formal definition of the blob detection for scalar functions on surfaces: \\
+Suppose we have  grayscale image $I(p):M^2 \toreal$. Blob detection method is as follows:
+\begin{enumerate} 
+\item Calculate the scale-space $\tilde{L}(p,t)$: the solution of a heat equation  on surface
+  $\partderiv{\tilde{L}(p, t)}{t}=-\LaplaceBeltrami{ \tilde{L}(p, t)},\tilde{L}(p, 0)=f(p)$, where $\LaplaceBeltrami$ is the Laplace-Beltrami operator.
+\item Obtain scaled scale space $L(p, t)$: $L(p, t)=t\tilde{L} ̃(p, t)$
+\item Calculate feature response function $fr(p, t)=t^2 \det{H_L(p,t)}$ where $H_L$ is a Hessian of $L(p, t)$  with fixed $t$.
+\item Find blobs centers as $c=\arg \extr{p,t} fr(p, t)$. Find blobs radius as $s=\sqrt{2} t$;
+\end{enumerate}
+
+Let’s consider the case of vector-valued image $f(p):M^2 \toeuclidean{m}$. The generalization of steps 1 and 2 (scale-space construction) to the color images is straightforward because of the linearity of the heat equation. Then look at the step 3. For the vector-valued function its Hessian is a covariant differential of the function differential []: $H_L=\CovariantDiff \Diff L ,H_L \in \CotangentSpaceP{M^2}\otimes\CotangentSpaceP{M^2}\otimes\TangentSpaceP{\bbbr^m}$, so we can’t use  $\det H_L$ as a feature response function. 
+\\
+How can this problem be solved? The key observations in our solution were the following:
+\begin{enumerate}
+\item	We can consider image as a 2-dimensional manifold embedded in $M^2\times\bbbr^m$. Then grayscale and manifold-valued cases differ only by co-dimension of embedding. So if we reformulate feature response function through some intrinsic manifold characteristics, it will not depend on m and thus it will be defined both for grayscale and color cases. 
+\item	How can we reformulate feature response function through intrinsic manifold characteristics? The hint is the following: if image surface tangent plane is close to the plane $\bbbr^2\times 0$ then scalar curvature  of image surface (which is intrinsic) is close to the determinant of image Hessian. 
+\end{enumerate}
+\subsection{The Proposed Method}
+Consider $n$-dimensional manifold $X$ and $m$-dimensional $Y$ (isometricaly embedded in $\bbbr^k$ and $\bbbr^l$). Denote $g(∙,∙)_{Y}$, $g(∙,∙)_{X}$ metrics on it and $\CovariantDiffManif{Y}$, $\CovariantDiffManif{X}$ associated Levi-Civita connections. 
+\\
+There is a manifold-valued function $f(p):X\to Y$. Denote $E=X\times Y$ a  trivial fiber bundle with base manifold $X$. $E$ is the $(n+m)$-dimensional manifold. 
+\\
+Let $s(p):X\to Y,s(p)=(p,f(p))$ be a section of $E$. Let $Gr$ be an image of $s(p)$, i.e. $Gr=(p,f(p))$. $Gr$ is a smooth $n$-dimensional manifold, embedded in $E$ by definition.
+\\
+Let $\tilde{X}=X\times p, p\in Y$. $X$ is embedded in $E$ by $id:X\to\tilde{X}$.
+\\
+\begin{definition} \label{RiemanDef}
+Let $f(p):X\to Y$ is a smooth function, $X$ is a smooth $n$-dimensional manifold, $r(∙)$is a scalar curvature of a manifold, $h(∙)$ is a mean curvature of a submanifold of the manifold $E$
+Then define \emph{scalar feature response} to be:
+$$\FRScalar=\frac{1}{\mu}\lim_{\mu\to 0} ( r(Gr_{\mu L} )-r(X ))$$,
+define \emph{mean feature response} to be:
+$$\FRMean=\frac{1}{\mu}\lim_{\mu\to 0} h(Gr_{\mu L})$$
+\end{definition}
+The next theorem connects $\FRScalar$ and $\FRMean$ with scale-space Hessian.
+\begin{theorem} \label{MainTheo}
+Let $f(p):X\to Y$ is a smooth function, $X$ is a smooth $n$-dimensional manifold. $L$ is scale-space (see p.1).\\
+Then:
+$$\FRScalar=\sum_{i,j=1; i\ne j}^{n}{(H_{ij},H_{ji})_Y-(H_{ii},H_{jj})_Y}$$,
+$$\FRMean=\|\tr H^\alpha\|_Y$$
+where $H_{ij}=H_L (e_i,e_j)$, $H^\alpha=H_L (e_\alpha)$, $H_L$ is a Hessian of $L(p,t)$ as a function of $p$ with fixed $t$, 
+$e_1,\dots,e_n$ is an orthonormal basis of $\TangentSpaceP{X}$, $e_1,\dots,e_\alpha$ is an orthonormal basis of $\TangentSpaceP{Y}$.
+\end{theorem}
+The corollary from Theorem \ref{MainTheo} states that for grayscale image Riemannian blob detection coincides with grayscale blob detection.
+\begin{corollary}\label{GrayscaleCol}
+Let $f(p):X\toreal$ is a smooth function, $X$ is a smooth 2-dimensional manifold. $L$ and $FR$ are scale-space and feature response functions respectively (see p.1).\\
+Then \emph{scalar feature response} is equal to the \emph{determinant feature response}:
+$$\FRScalar=FR_{\det}$$,
+\emph{mean feature response} is equal to the \emph{trace feature response}:
+$$\FRMean=FR_{\mathrm{tr}}$$.
+\end{corollary}
+
+\subsection{Hessian of Map between Manifolds}
+Let $y(x):X\to Y$ be a smooth map from smooth manifold $X$ to a smooth manifold $Y$. Hessian of $y(x)$ is a covariant differential of differential of $y$.
+\\
+In more detail, $\Diff y:TX\to TY$ can be viewed as $\Diff y \in \DiffSpace{X}{Y}{y}$.
+$\DiffSpace{X}{Y}{y}$ is a vector bundle over $X$, so we can calculate a covariant differential of $\Diff y$ with respect to the induced connection on $\DiffSpace{X}{Y}{y}$: $Hess_y=\CovariantDiff \Diff y \in \HessianSpace{X}{Y}{y}$
+\\
+Let's find more convenient formulation of Hessian $Hess_y:\TangentBundle{X}\otimes\TangentBundle{X}\to \TangentBundle{Y}$
+To do it we need the following Lemma.
+\begin{lemma} \label{LemCovDiff}
+Let $\bigeps_1$, $\bigeps_2$ be vector bundles over manifold $X$. 
+\\
+Let $T \in {\bigeps_1}^* \otimes \ {\bigeps_2}^*$. Then
+$$\CovariantDeriv{z}{T}(x, y) = \CovariantDeriv{z}{(T(x, y))} -
+T(\CovariantDeriv{z}{x}, y) - T(x, \CovariantDeriv{z}{y})$$
+where $z \in TX, x \in \bigeps_1, y \in \bigeps_2$. 
+\end{lemma}
+The right side of equality is obtained by usage of $T$ coordinate representation and Leibniz rule (full proof is omitted due to the space constraints).
+
+\begin{lemma}
+Let $y$ be injective smooth map $y:X\to Y$, $u, v\in T_p X$. Then
+$Hess_y(u,v)=\CovariantDerivManif{y(X)}{ \Diff y(v)} \Diff y(u) - 
+							\Diff y( 
+							\CovariantDerivManif{\TangentBundle{X}}{v}u
+							)$
+\end{lemma}
+\begin{proof}
+Let $w\in \TpPreimage{(y(X))}{y}$. By Lemma \ref{LemCovDiff}: 
+$$(\CovariantDeriv{v} \Diff y)(u, w) = \CovariantDeriv{v}{(\Diff y(u, w))} - \Diff y(\CovariantDeriv{v}{u}, w) - \Diff y({u}, \CovariantDeriv{v}{w})$$
+If we treat $Hess_y$ as $Hess_y:\TangentBundle{X}\otimes\TangentBundle{X}\to \TPreimage{(y(X))}{f}$ 
+then $Hess_y(u, v)= \sum_{j} \CovariantDeriv{v}{(\Diff y(u, e_j))} e_j$ where $\{e_j\}$ is a basis of $\TpPreimage{(y(X))}{y}$. Then
+\begin{multline}
+\CovariantDeriv{v}{(\Diff y(u, e_j))} e_j = \partderiv{(y(u)^j)}{v} e_j - \Diff y(\CovariantDeriv{v}{u})^j e_j - v^k \Diff y(u)^i \tensor*{\Gamma}{^i_j_k}= 
+\\ 
+\CovariantDerivManif{\TPreimage{(y(X))}{y}}{ v} \Diff y(u) - 
+							\Diff y( 
+							\CovariantDerivManif{\TangentBundle{X}}{v}u
+							) = 
+							(\textrm{by isomorphism } \Diff y) \CovariantDerivManif{y(X)}{ \Diff y(v)} \Diff y(u) - 
+							\Diff y( 
+							\CovariantDerivManif{\TangentBundle{X}}{v}u )
+\end{multline}
+\qed 
+\end{proof}
+
+\subsection{Connection between Hessian and Second Fundamental Form}
+Let $y(x):X\to Y$ be a smooth map from smooth manifold $X$ to a smooth manifold $Y$. Let $\tilde{y}(x)$ be $\tilde{y}(x):X \to X\times Y, \tilde{y}(x)=(p,y(x))$
+\\
+${e_i, i=1, …,n}$ is orthonormal basis of $T_x X$.
+$i_v(x)=id(x,v)$ is a set of maps $X\to X\times Y$. An orthonormal basis of $T_{x,v}(X\times Y)$ is ${\Diff i_v(e_i), i=1,\dots,n, e_\alpha,\alpha=1,\dots,m}$. We will denote $\Diff i_v(e_i)$ also as $e_i$ in further analysis. 
+\\
+$e_i^{'}=\Diff y(e_i)$ is a basis of $T_x (Gr_y)$, 
+$e_\alpha^{'}$ such that $(e_\alpha^{'},e_i^{'})_{X\times Y} \forall i \forall \alpha$ is a basis of $T_p (Gr_f)^{\bot}$. Then $e_i^{'}, e_\alpha^{'}$ is a basis in $T_{x,v}(X\times Y)$.
+\begin{corollary}
+
+\end{corollary}
+%
+\subsubsection{The General Case: Nontriviality.} % We assume that $H$ is $\left(A_{\infty},B_{\infty}\right)$-sub\-qua\-dra\-tic at infinity, for some constant symmetric matrices $A_{\infty}$ and $B_{\infty}$, with $B_{\infty}-A_{\infty}$ positive definite. Set:
+\begin{eqnarray}
+\gamma :&=&{\rm smallest\ eigenvalue\ of}\ \ B_{\infty} - A_{\infty} \\
+   \lambda : &=& {\rm largest\ negative\ eigenvalue\ of}\ \
+   J \frac{d}{dt} +A_{\infty}\ .
+\end{eqnarray}
+
+\begin{proposition}
+Assume $H'(0)=0$ and $ H(0)=0$. Set:
+\begin{equation}
+   \delta := \liminf_{x\to 0} 2 N (x) \left\|x\right\|^{-2}\ .
+   \label{eq:one}
+\end{equation}
+
+If $\gamma < - \lambda < \delta$,
+the solution $\overline{u}$ is non-zero:
+\begin{equation}
+   \overline{x} (t) \ne 0\ \ \ \forall t\ .
+\end{equation}
+\end{proposition}
+%
+\begin{proof}
+Condition (\ref{eq:one}) means that, for every $\delta ' > \delta$, there is some $\varepsilon > 0$ such that \begin{equation}
+   \left\|x\right\| \le \varepsilon \Rightarrow N (x) \le
+   \frac{\delta '}{2} \left\|x\right\|^{2}\ .
+\end{equation}
+\end{proof}
+
+%
+
+\begin{lemma}
+Assume that $H$ is $C^{2}$ on $\bbbr^{2n} \setminus \{ 0\}$ and that $H'' (x)$ is non-de\-gen\-er\-ate for any $x\ne 0$. Then any local minimizer $\widetilde{x}$ of $\psi$ has minimal period $T$.
+\end{lemma}
+%
+\begin{proof}
+We know that $\widetilde{x}$, or
+$\widetilde{x} + \xi$ for some constant $\xi \in \bbbr^{2n}$, is a $T$-periodic solution of the Hamiltonian system:
+\begin{equation}
+   \dot{x} = JH' (x)\ .
+\end{equation}
+FF.\qed \end{proof} 
+
+\begin{table}
+\caption{This is the example table taken out of {\it The \TeX{}book,} p.\,246} \begin{center} \begin{tabular}{r@{\quad}rl} \hline \multicolumn{1}{l}{\rule{0pt}{12pt}
+                    Year}&\multicolumn{2}{l}{World population}\\[2pt] \hline\rule{0pt}{12pt}
+8000 B.C.  &     5,000,000& \\
+   50 A.D.  &   200,000,000& \\
+1650 A.D.  &   500,000,000& \\
+1945 A.D.  & 2,300,000,000& \\
+1980 A.D.  & 4,400,000,000& \\[2pt]
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+%
+\begin{theorem} [Ghoussoub-Preiss]\label{ghou:pre}
+Assume $H(t,x)$ is
+\qed
+\end{theorem}
+%
+\begin{example} [{{\rm External forcing}}] Consider the system:
+\begin{equation}
+   \dot{x} = JH' (x) + f(t)
+\end{equation}
+\end{example}
+%
+\begin{definition}
+Let $A_{\infty} (t)$ and $B_{\infty} (t)$ be symmetric
+\end{definition}
+%
+
+\paragraph{Notes and Comments.}
+The first results on subharmonics were
+
+
+%
+% ---- Bibliography ----
+%
+\begin{thebibliography}{5}
+%
+\bibitem {clar:eke}
+Clarke, F., Ekeland, I.:
+Nonlinear oscillations and
+boundary-value problems for Hamiltonian systems.
+Arch. Rat. Mech. Anal. 78, 315--333 (1982)
+
+\bibitem {clar:eke:2}
+Clarke, F., Ekeland, I.:
+Solutions p\'{e}riodiques, du
+p\'{e}riode donn\'{e}e, des \'{e}quations hamiltoniennes.
+Note CRAS Paris 287, 1013--1015 (1978)
+
+\bibitem {mich:tar}
+Michalek, R., Tarantello, G.:
+Subharmonic solutions with prescribed minimal period for nonautonomous Hamiltonian systems.
+J. Diff. Eq. 72, 28--55 (1988)
+
+\bibitem {tar}
+Tarantello, G.:
+Subharmonic solutions for Hamiltonian
+systems via a $\bbbz_{p}$ pseudoindex theory.
+Annali di Matematica Pura (to appear)
+
+\bibitem {rab}
+Rabinowitz, P.:
+On subharmonic solutions of a Hamiltonian system.
+Comm. Pure Appl. Math. 33, 609--633 (1980)
+
+\end{thebibliography}
+
+\end{document}
